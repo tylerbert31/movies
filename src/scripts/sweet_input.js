@@ -1,7 +1,7 @@
-import Swal from "sweetalert2"
+import Swal from "sweetalert2";
 
-function get_comment() {
-  ;(async () => {
+function get_comment(callback) {
+  (async () => {
     const { value: formValues } = await Swal.fire({
       title: "Suggest a movie",
       html:
@@ -12,22 +12,23 @@ function get_comment() {
         return [
           document.getElementById("swal-input1").value,
           document.getElementById("swal-input2").value,
-        ]
+        ];
       },
-    })
+    });
 
     if (formValues) {
       if (formValues[0] !== "" && formValues[1] !== "") {
-        localStorage.setItem("name", formValues[0])
-        localStorage.setItem("comment", formValues[1])
-        Swal.fire("Thank you " + formValues[0] + "!")
-
-        return true
+        localStorage.setItem("name", formValues[0]);
+        localStorage.setItem("comment", formValues[1]);
+        Swal.fire("Thank you " + formValues[0] + "!");
+        return true;
       } else {
-        Swal.fire("Please fill in all the fields!", "", "warning")
+        Swal.fire("Please fill in all the fields!", "", "warning");
+        return false;
       }
     }
-  })()
+  })();
+  callback();
 }
 
-export default get_comment
+export default get_comment;

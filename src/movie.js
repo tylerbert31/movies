@@ -1,48 +1,46 @@
-import React, { useState, useEffect } from "react"
-import "./styles/main.css"
-import "./styles/mobile_nav.css"
-import "./styles/modal.css"
-import { db } from "./scripts/db"
-import Comment from "./components/comment"
-import { collection, getDocs, addDoc } from "firebase/firestore"
-import get_comment from "./scripts/sweet_input"
+import React, { useState, useEffect } from "react";
+import "./styles/main.css";
+import "./styles/mobile_nav.css";
+import "./styles/modal.css";
+import { db } from "./scripts/db";
+import Comment from "./components/comment";
+import { collection, getDocs, addDoc } from "firebase/firestore";
+import get_comment from "./scripts/sweet_input";
 
 function Movie() {
-  const [users, setUsers] = useState([])
-  const usersCollectionRef = collection(db, "comments")
+  const [users, setUsers] = useState([]);
+  const usersCollectionRef = collection(db, "comments");
 
   const newComment = async () => {
     await addDoc(usersCollectionRef, {
       name: localStorage.getItem("name"),
       comment: localStorage.getItem("comment"),
-    })
-    window.location.reload()
-  }
+    });
+    window.location.reload();
+  };
 
   useEffect(() => {
     const fetchUsers = async () => {
       // check if users are already cached in state
       if (users.length > 0) {
-        return
+        return;
       }
 
       try {
-        const data = await getDocs(usersCollectionRef)
-        setUsers(data.docs.map((doc) => ({ ...doc.data() })))
+        const data = await getDocs(usersCollectionRef);
+        setUsers(data.docs.map((doc) => ({ ...doc.data() })));
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }
+    };
 
-    fetchUsers()
-  }, [users, usersCollectionRef])
+    fetchUsers();
+  }, [users, usersCollectionRef]);
 
   function sendNewData() {
-    get_comment()
-
-    setTimeout(function () {
-      newComment()
-    }, 5000)
+    if (get_comment()) {
+      newComment();
+    }
   }
 
   return (
@@ -91,14 +89,14 @@ function Movie() {
                       <Comment commenter={user.name} comments={user.comment} />
                     </td>
                   </tr>
-                )
+                );
               })}
             </center>
           </tbody>
         </table>
       </center>
     </React.Fragment>
-  )
+  );
 }
 
-export default Movie
+export default Movie;
