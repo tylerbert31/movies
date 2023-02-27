@@ -38,9 +38,11 @@ function Movie() {
   }, [users, usersCollectionRef]);
 
   function sendNewData() {
-    if (get_comment()) {
-      newComment();
-    }
+    get_comment().then(() => {
+      setTimeout(function () {
+        newComment();
+      }, 2500);
+    });
   }
 
   return (
