@@ -1,0 +1,26 @@
+@media only screen and (max-width: 1369px) {
+  #Description {
+    margin-left: 12%;
+  }
+}
+
+@media only screen and (orientation: portrait) {
+  button {
+    font-size: 25px;
+    width: 300px;
+    height: 65px;
+  }
+
+  img {
+    margin: 50px;
+  }
+
+  span {
+    display: inline-block;
+    vertical-align: bottom;
+    color: white;
+  }
+  .fa {
+    top: 12px;
+  }
+}

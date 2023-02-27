@@ -1,0 +1,68 @@
+.card {
+  width: 100%;
+  max-width: 290px;
+  height: 70px;
+  background: #353535;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  backdrop-filter: blur(10px);
+  transition: 0.5s ease-in-out;
+  margin: -13px;
+}
+
+.card:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.img {
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+  border-radius: 10px;
+  background-image: url("https://ih1.redbubble.net/image.1087633160.0410/st,small,507x507-pad,600x600,f8f8f8.jpg");
+  background-size: cover;
+}
+
+.card:hover > .img {
+  transition: 0.5s ease-in-out;
+}
+
+.textBox {
+  width: calc(100% - 90px);
+  color: white;
+  font-family: "Poppins" sans-serif;
+}
+
+.textContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.span {
+  font-size: 10px;
+}
+
+.h1 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: -5px;
+
+  margin-right: 300px;
+}
+
+.p {
+  font-size: 12px;
+  font-weight: lighter;
+  margin-left: 20px;
+  text-align: left;
+  text-indent: 0px;
+  margin-right: 0px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: inherit;
+}
